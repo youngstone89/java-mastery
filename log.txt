@@ -1,0 +1,60 @@
+Main : Status of Thread :0:NEW
+Main : Status of Thread :1:NEW
+Main : Status of Thread :2:NEW
+Main : Status of Thread :3:NEW
+Main : Status of Thread :4:NEW
+Main : Status of Thread :5:NEW
+Main : Status of Thread :6:NEW
+Main : Status of Thread :7:NEW
+Main : Status of Thread :8:NEW
+Main : Status of Thread :9:NEW
+Main : ID 10 - My thread0
+Main : Priority: 10
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 11 - My thread1
+Main : Priority: 1
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 12 - My thread2
+Main : Priority: 10
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 13 - My thread3
+Main : Priority: 1
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 14 - My thread4
+Main : Priority: 10
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 15 - My thread5
+Main : Priority: 1
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 16 - My thread6
+Main : Priority: 10
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 17 - My thread7
+Main : Priority: 1
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 18 - My thread8
+Main : Priority: 10
+Main : Old State NEW
+Main : New State TERMINATED
+Main : ******************************************
+Main : ID 19 - My thread9
+Main : Priority: 1
+Main : Old State NEW
+Main : New State RUNNABLE
+Main : ******************************************
