@@ -14,7 +14,7 @@ public class MapEntryTest {
             System.out.println(it.getKey() + "" + it.getValue());
         }
 
-        hm.merge(null, null, null)
+        hm.merge(null, null, null);
 
     }
 
