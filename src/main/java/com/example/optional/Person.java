@@ -20,7 +20,12 @@ public class Person {
     }
 
     static class Car {
+
         private Optional<Insurance> insurance;
+
+        public Car(Insurance insurance) {
+            this.insurance = Optional.ofNullable(insurance);
+        }
 
         public Optional<Insurance> getInsurance() {
             return insurance;
@@ -31,8 +36,20 @@ public class Person {
         // we should throw NPE when name is empty so that we could find bug
         private String name;
 
+        public Insurance(String name) {
+            this.name = name;
+        }
+
         public String getName() {
             return name;
         }
+    }
+
+    public static String getCarInsuranceName(Optional<Person> person) {
+        return person
+                .flatMap(Person::getCar)
+                .flatMap(Car::getInsurance)
+                .map(Insurance::getName)
+                .orElse("Unknown");
     }
 }
