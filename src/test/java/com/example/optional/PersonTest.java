@@ -69,4 +69,28 @@ public class PersonTest {
             assertEquals("Unknown", name);
         });
     }
+
+    @Test
+    public void testPerson_assertNotThrowsNPEAndNameIsUnknown_whenOptPersonIsEmpty() {
+        assertDoesNotThrow(() -> {
+            Optional<Person> optPerson = Optional.empty();
+            String name = Person.getCarInsuranceName(optPerson);
+            log.info(name);
+            assertEquals("Unknown", name);
+        });
+    }
+
+    @Test
+    public void testPerson_getOptionalString_whenMapOptionalInsurance() {
+        assertDoesNotThrow(() -> {
+            Optional<Insurance> optInsur = Optional.empty();
+            Optional<String> optString = optInsur.map(Insurance::getName);
+            Class<? extends Optional> x = optString.getClass();
+            log.info(x.getName());
+            log.info(x.getSimpleName());
+            log.info(x.getTypeName());
+
+            log.info(x.getCanonicalName());
+        });
+    }
 }
