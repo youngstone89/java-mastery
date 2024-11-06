@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 
@@ -116,4 +118,13 @@ public class PersonTest {
         log.info(x.toString());
     }
 
+    @Test
+    public void testOptionalStream() {
+        Optional<String> a = Optional.ofNullable("A");
+        Optional<String> b = Optional.ofNullable("B");
+        Optional<String> c = Optional.ofNullable(null);
+        Stream<Optional<String>> optStream = Stream.of(a, b, c);
+        Set<String> set1 = optStream.flatMap(Optional::stream).collect(Collectors.toSet());
+        log.info(set1.toString());
+    }
 }
