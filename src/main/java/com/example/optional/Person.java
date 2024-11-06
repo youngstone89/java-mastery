@@ -1,6 +1,9 @@
 package com.example.optional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Person
@@ -51,5 +54,28 @@ public class Person {
                 .flatMap(Car::getInsurance)
                 .map(Insurance::getName)
                 .orElse("Unknown");
+    }
+
+    public static Set<String> getCarInsuranceNames(List<Person> persons) {
+        return persons.stream()
+                .map(Person::getCar)
+                .map(optCar -> optCar.flatMap(Car::getInsurance))
+                .map(optIns -> optIns.map(Insurance::getName))
+                .flatMap(Optional::stream) // remove empty optional
+                .collect(Collectors.toSet());
+    }
+
+    public static Set<String> getCarInsuranceNamesWithoutOptionalStream(List<Person> persons) {
+        return persons.stream()
+                .map(p -> Optional.ofNullable(p.getCar())
+                        .orElse(
+                                Optional.ofNullable(
+                                        new Car(null))))
+                .map(optCar -> optCar.flatMap(Car::getInsurance))
+                .map(optIns -> optIns.map(Insurance::getName))
+                // .filter(Optional::isPresent)
+                .map(o -> o.orElse("null"))
+                .peek(System.out::println)
+                .collect(Collectors.toSet());
     }
 }

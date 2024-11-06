@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -93,4 +95,25 @@ public class PersonTest {
             log.info(x.getCanonicalName());
         });
     }
+
+    @Test
+    public void testPerson_getCarInsuranceNames() {
+        List<Person> persons = List.of(
+                new Person(new Car(new Insurance("a"))),
+                new Person(new Car(new Insurance("b"))),
+                new Person(new Car(new Insurance("c"))));
+        Set<String> x = Person.getCarInsuranceNames(persons);
+        log.info(x.toString());
+    }
+
+    @Test
+    public void testPerson_getCarInsuranceNamesWithoutOptionalStream() {
+        List<Person> persons = List.of(
+                new Person(new Car(null)),
+                new Person(null),
+                new Person(new Car(new Insurance("c"))));
+        Set<String> x = Person.getCarInsuranceNamesWithoutOptionalStream(persons);
+        log.info(x.toString());
+    }
+
 }
