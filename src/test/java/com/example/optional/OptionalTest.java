@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -343,5 +344,26 @@ public class OptionalTest {
 
         // then
         assertTrue(collect.isEmpty());
+    }
+
+    public static Optional<Integer> stringToInt(String s) {
+        try {
+            return Optional.of(Integer.parseInt(s));
+        } catch (NumberFormatException e) {
+            return Optional.empty();
+        }
+    }
+
+    @Test
+    void testStringToInt() {
+        Optional<Integer> x = stringToInt("s");
+        assertFalse(x.isPresent());
+    }
+
+    public static int readDuration(Properties props, String name) {
+        return Optional.ofNullable(props.getProperty(name))
+                .flatMap(OptionalTest::stringToInt)
+                .filter(i -> i > 0)
+                .orElse(0);
     }
 }
